@@ -1,0 +1,11 @@
+* Check assembly version
+* Update README html
+* Clean bin folders
+* Build
+* Run the post-build.ps1 script with power-shell
+* Test zip and installers
+* Upload on Sourceforge
+* Create news on Sourceforge
+* Create news on website
+* Update lastversion.xml
+* Post on Facebook

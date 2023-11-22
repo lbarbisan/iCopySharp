@@ -1,0 +1,362 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3FF0DB84-E1EA-0CAA-02B3-C7A4E7EF764C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>iCopy</RootNamespace>
+    <AssemblyName>iCopySharp</AssemblyName>
+    <ApplicationIcon>Resources\iCopy2.ico</ApplicationIcon>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <!-- TO REVIEW -->
+    <!--
+	<PublishUrl>ftp://web.sourceforge.net:22/home/groups/i/ic/icopy/htdocs/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>4</UpdateInterval>
+    <UpdateIntervalUnits>Weeks</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <InstallUrl>http://icopy.sourceforge.net/</InstallUrl>
+    <SupportUrl>http://sourceforge.net/projects/icopy/</SupportUrl>
+    <TargetCulture>en-GB</TargetCulture>
+    <ProductName>iCopy</ProductName>
+    <PublisherName>Matteo Rossi</PublisherName>
+    <MinimumRequiredVersion>1.3.0.85</MinimumRequiredVersion>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>publish.htm</WebPage>
+    <ApplicationRevision>75</ApplicationRevision>
+    <ApplicationVersion>1.4.3.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+	-->
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.WindowsAPICodePack, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="iCopy" />
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="My Project\MyNamespace.Dynamic.Designer.cs" />
+    <Compile Include="My Project\MyNamespace.Static.1.Designer.cs" />
+    <Compile Include="Classes\ExitException.cs" />
+    <Compile Include="Classes\PropertiesToXML.cs" />
+    <Compile Include="Classes\Utilities.cs" />
+    <Compile Include="Classes\ScanSettings.cs" />
+    <Compile Include="Forms\AboutBox.Designer.cs">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AboutBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="Build\setup.nsi" />
+    <Compile Include="Forms\MorePagesDialog.Designer.cs">
+      <DependentUpon>MorePagesDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MorePagesDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Classes\iCopyControl.cs" />
+    <Compile Include="Forms\SettingsDialog.Designer.cs">
+      <DependentUpon>SettingsDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SettingsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ImageSettings.Designer.cs">
+      <DependentUpon>ImageSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ImageSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\mainfrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\mainfrm.Designer.cs">
+      <DependentUpon>mainfrm.cs</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\Application1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Application.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Classes\PortableSettingsProvider.cs" />
+    <Compile Include="Classes\Printer.cs" />
+    <Compile Include="Classes\Scanner.cs" />
+    <Compile Include="Forms\SplashScreen.Designer.cs">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Classes\vistaTaskDialogs.cs" />
+    <Compile Include="Classes\WIAConstants.cs" />
+    <Compile Include="WinFormStrings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WinFormStrings.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Forms\AboutBox.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>AboutBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Language Files\WinFormStrings.bg-BG.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Language Files\WinFormStrings.cs-CZ.resx" />
+    <EmbeddedResource Include="Language Files\WinFormStrings.de-DE.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Language Files\WinFormStrings.el-GR.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Language Files\WinFormStrings.es-ES.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Language Files\WinFormStrings.fi-FI.resx" />
+    <EmbeddedResource Include="Language Files\WinFormStrings.fr-FR.resx" />
+    <EmbeddedResource Include="Language Files\WinFormStrings.he-IL.resx" />
+    <EmbeddedResource Include="Language Files\WinFormStrings.hu-HU.resx" />
+    <EmbeddedResource Include="Language Files\WinFormStrings.it-IT.resx" />
+    <EmbeddedResource Include="Language Files\WinFormStrings.nl-NL.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Language Files\WinFormStrings.pl-PL.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Language Files\WinFormStrings.pt-BR.resx" />
+    <EmbeddedResource Include="Language Files\WinFormStrings.ro-RO.resx" />
+    <EmbeddedResource Include="Language Files\WinFormStrings.ru-RU.resx">
+      <SubType>Designer</SubType>
+      <CustomToolNamespace>iCopy.My.Resources</CustomToolNamespace>
+      <LastGenOutput>WinFormStrings.ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Language Files\WinFormStrings.sk-SK.resx" />
+    <EmbeddedResource Include="Language Files\WinFormStrings.tr-TR.resx" />
+    <EmbeddedResource Include="Language Files\WinFormStrings.zh-CN.resx" />
+    <EmbeddedResource Include="Language Files\WinFormStrings.zh-TW.resx" />
+    <EmbeddedResource Include="Forms\MorePagesDialog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>MorePagesDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SettingsDialog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SettingsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ImageSettings.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ImageSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Forms\mainfrm.it-IT.resx">
+      <DependentUpon>mainfrm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
+    <EmbeddedResource Include="Forms\mainfrm.resx">
+      <DependentUpon>mainfrm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>iCopy.My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Language Files\WinFormStrings.ja-JP.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SplashScreen.resx">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinFormStrings.resx">
+      <SubType>Designer</SubType>
+      <CustomToolNamespace>iCopy.My.Resources</CustomToolNamespace>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>WinFormStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\app.manifest" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>iCopy.My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Build\post-build.ps1" />
+    <None Include="Resources\iCopy.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.VisualBasic.PowerPacks.10.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft Visual Basic PowerPacks 10.0</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iCopy192.png" />
+    <Content Include="Build\7za.exe" />
+    <None Include="Resources\iCopy_button.png" />
+    <Content Include="CREDITS.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Interop.WIA.dll" />
+    <Content Include="Resources\Check-Mark.png" />
+    <Content Include="Resources\InstBann.bmp" />
+    <Content Include="Resources\multipage.png" />
+    <Content Include="Resources\pdficon_large.png" />
+    <Content Include="Resources\printer.gif" />
+    <Content Include="Resources\saveToFile.png" />
+    <Content Include="Resources\scanner.gif" />
+    <Content Include="Resources\welcome.bmp" />
+    <Content Include="wiaaut.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Changelog.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="License.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Microsoft.WindowsAPICodePack.dll" />
+    <Content Include="Resources\btn_donateCC_LG.gif" />
+    <None Include="Resources\iCopy2.ico" />
+    <None Include="Resources\Devices-scanner-icon.png" />
+    <None Include="Resources\license.rtf" />
+    <None Include="Resources\Printer-icon.png" />
+    <None Include="Resources\pdf_icon.gif" />
+    <None Include="Scanner Logs\brother ADF.log" />
+    <None Include="Resources\Aboutbgr.jpg" />
+    <None Include="Resources\iCopyAbout.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PDFWriter\PDFWriter.csproj">
+      <Project>{A7400A6F-1809-4C4A-B604-1FAC6123C6B8}</Project>
+      <Name>PDFWriter</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="WIA">
+      <Guid>{94A0E92D-43C0-494E-AC29-FD45948A5221}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

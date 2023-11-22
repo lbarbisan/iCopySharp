@@ -1,0 +1,13 @@
+iCopy/bin/
+iCopy/obj/
+PDFWriter/bin/
+PDFWriter/obj/
+TextFile1.txt
+iCopy/Resources/Thumbs.db
+/iCopy/Changelog.html
+/iCopy/README.html
+*.suo
+.vs
+/iCopy2/bin/Debug
+/iCopy2/obj/Debug
+*.bak
