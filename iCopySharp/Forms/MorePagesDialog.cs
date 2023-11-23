@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Threading;
 // iCopy - Simple Photocopier
 // Copyright (C) 2007-2018 Matteo Rossi
 
@@ -37,13 +39,57 @@ namespace iCopy
     /// <remarks></remarks>
         public new DialogResult ShowDialog(int acquiredPages, IWin32Window owner)
         {
+            
             lblAcquiredPagesN.Text = acquiredPages.ToString();
-            return ShowDialog(owner);
+
+            var file = Path.GetDirectoryName(this.GetType().Assembly.Location);
+            FileSystemWatcher morePageswatcher = new FileSystemWatcher(file);
+            morePageswatcher.EnableRaisingEvents = true;
+            morePageswatcher.Changed += MorePagesWatcher_Changed;
+            
+            var result = ShowDialog(owner);
+            return result;
         }
+
         public new DialogResult ShowDialog(int acquiredPages)
         {
+            
             lblAcquiredPagesN.Text = acquiredPages.ToString();
-            return ShowDialog(Owner);
+
+            var file = Path.GetDirectoryName(this.GetType().Assembly.Location);
+            FileSystemWatcher morePageswatcher = new FileSystemWatcher(file);
+            morePageswatcher.EnableRaisingEvents = true;
+            morePageswatcher.Created += MorePagesWatcher_Changed;
+
+            var result = ShowDialog(Owner);
+            return result;
+        }
+
+        private void MorePagesWatcher_Changed(object sender, FileSystemEventArgs e)
+        {
+            var file = Path.GetDirectoryName(this.GetType().Assembly.Location);
+            if (File.Exists(file + "\\morepages.lock"))
+            {
+                this.BeginInvoke((MethodInvoker)delegate {
+                    // Running on the UI thread
+                    Thread.Sleep(1000);
+                    File.Delete(e.FullPath);
+                    this.DialogResult = DialogResult.Yes;
+                    this.Close();
+                });
+            }
+
+            if (File.Exists(file + "\\stopscan.lock"))
+            {
+                this.BeginInvoke((MethodInvoker)delegate {
+                    // Running on the UI thread
+                    Thread.Sleep(1000);
+                    File.Delete(e.FullPath);
+                    this.DialogResult = DialogResult.No;
+                    this.Close();
+                });
+            }
+
         }
 
         private void DlgScanMorePages_Load(object sender, EventArgs e)

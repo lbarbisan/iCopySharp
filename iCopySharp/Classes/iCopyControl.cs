@@ -251,9 +251,11 @@ namespace iCopy
                                 {
                                     try
                                     {
-                                        manager.RegisterPersistentEvent(Application.ExecutablePath + " /StiDevice:%1 /StiEvent:%2 /copy", "iCopy", "Directly print using iCopy", Application.ExecutablePath + ",0", EventID.wiaEventScanImage);
-                                        manager.RegisterPersistentEvent(Application.ExecutablePath + " /StiDevice:%1 /StiEvent:%2 /copy", "iCopy", "Directly print using iCopy", Application.ExecutablePath + ",0", EventID.wiaEventScanImage2);
-                                        manager.RegisterPersistentEvent(Application.ExecutablePath + " /StiDevice:%1 /StiEvent:%2 /file", "iCopy", "Save to file using iCopy", Application.ExecutablePath + ",0", EventID.wiaEventScanImage4);
+                                        //manager.RegisterPersistentEvent(Application.ExecutablePath + " /StiDevice:%1 /StiEvent:%2 /copy", "iCopy", "Directly print using iCopy", Application.ExecutablePath + ",0", EventID.wiaEventScanImage4);
+                                        manager.RegisterPersistentEvent(Application.ExecutablePath + " /StiDevice:%1 /StiEvent:%2 /pdf /multiplepages", "iCopy To Multiples Pages Pdf", "Directly print using iCopy", Application.ExecutablePath + ",0", EventID.wiaEventScanImage2);
+                                        manager.RegisterPersistentEvent(Application.ExecutablePath + " /StiDevice:%1 /StiEvent:%2 /pdf", "iCopy To Pdf", "Save to file using iCopy", Application.ExecutablePath + ",0", EventID.wiaEventScanImage);
+                                        manager.RegisterPersistentEvent(Application.ExecutablePath.Replace("iCopySharp.exe", "net6.0\\iCopyCommand.exe") + " /morepages.lock", "iCopy Stop Multiplages", "Stop scan when multipages is activated", Application.ExecutablePath + ",0", EventID.wiaEventScanImage3);
+                                        manager.RegisterPersistentEvent(Application.ExecutablePath.Replace("iCopySharp.exe", "net6.0\\iCopyCommand.exe") + " /stopscan.lock", "iCopy Continue Multipages", "Continue scan when multipages is activated", Application.ExecutablePath + ",0", EventID.wiaEventScanImage4);
                                         Utilities.MsgBoxWrap("iCopy successfully registered to the scanner button. You may need to restart the computer in order for the change to take effect.", Constants.vbInformation, "iCopy");
                                     }
                                     catch (UnauthorizedAccessException ex)
